@@ -5,7 +5,10 @@ public class Aircraft {
     protected Aircraft(String name, Coordinates coordinates){
         this.name = name;
         this.coordinates = coordinates;
-        this.id = nextId();
+        if(coordinates.getHeight() > 0){
+            this.id = nextId();
+
+        }
 
     }
     private long nextId(){

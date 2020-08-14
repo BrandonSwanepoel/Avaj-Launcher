@@ -1,7 +1,6 @@
 package tower;
 
 import java.util.ArrayList;
-
 import aircraft.Flyable;
 
 public class Tower {
@@ -9,22 +8,53 @@ public class Tower {
     private ArrayList<Flyable> observers = new ArrayList<Flyable>();
 
     public void register(Flyable flyable) {
-        observers.add(flyable);
-    }
-
-    public void unregister(Flyable flyable) {
-        var itr = observers.iterator();
-        while (itr.hasNext()) {
-            if (itr.next() == flyable) {
-                itr.remove();
-            }
+        if (flyable.getCoordinates().getHeight() > 0) {
+            observers.add(flyable);
+            System.out.println("Tower says: " + flyable.getType() + "#" + flyable.getName() + '(' + flyable.getId()
+                    + ") registered to the weather tower.");
         }
     }
 
+    public void unregister(Flyable flyable) {
+        System.out.println(flyable.getType() + "#" + flyable.getName() + "(" + flyable.getId() + ")" + " landing.");
+        System.out.println("Tower says: " + flyable.getType() + "#" + flyable.getName() + "(" + flyable.getId()
+                + ") unregistered from weather tower.");
+        System.out.println(flyable.getType() + "#" + flyable.getName() + "(" + flyable.getId()
+                + ") Coordinates(Longitude = " + flyable.getCoordinates().getLongitude() + " and Latitude = "
+                + flyable.getCoordinates().getLatitude() + ")");
+    }
+
+    public void weatherMessage(Flyable flyable) {
+        switch (flyable.getWeather()) {
+            case "RAIN":
+                System.out.println(flyable.getType() + "#" + flyable.getName() + '(' + flyable.getId()
+                        + ") It's raining... 'Men' jk");
+                break;
+            case "FOG":
+                System.out.println(flyable.getType() + "#" + flyable.getName() + '(' + flyable.getId()
+                        + ") I can't see...The Fog is too thick");
+                break;
+            case "SUN":
+                System.out.println(flyable.getType() + "#" + flyable.getName() + '(' + flyable.getId()
+                        + ") It's hot hot hot up here ");
+                break;
+            case "SNOW":
+                System.out.println(flyable.getType() + "#" + flyable.getName() + '(' + flyable.getId()
+                        + ") There is enough snow to build a Snowman");
+                break;
+            default:
+                System.out.println("Houston we have a problem here");
+        }
+
+    }
+
     protected void conditionsChanged() {
-        var itr = observers.iterator();
-        while (itr.hasNext()) {
-            itr.next().updateConditions();
+        for (int i = 0; i < observers.size(); i++) {
+            observers.get(i).updateConditions();
+
+            if (observers.get(i).getCoordinates().getHeight() <= 0) {
+                observers.remove(i);
+            }
         }
     }
 }
