@@ -35,40 +35,22 @@ public class JetPlane extends Aircraft implements Flyable {
             default:
                 System.out.println("Houston we have a problem here");
         }
-        if (this.coordinates.getHeight() <= 0) {
+        if (coordinates.getHeight() <= 0) {
             weatherTower.unregister(this);
         }
 
     }
-    
-    @Override
-    public Coordinates getCoordinates(){
-        return this.coordinates;
-    }
+
     @Override
     public void registerTower(WeatherTower weatherTower) {
         weatherTower.register(this);
     }
 
     @Override
-    public String getName() {
-        return this.name;
-    }
-    @Override
     public String getType() {
         return "JetPlane";
     }
 
-    @Override
-    public String getId() {
-        try {
-            return String.valueOf(this.id);
-        } catch (Exception e) {
-            System.out.println("There was an error when converting integer to String");
-            System.exit(0);
-            return null;
-        }
-    }
     @Override
     public String getWeather() {
         return this.weather;

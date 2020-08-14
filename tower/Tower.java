@@ -54,6 +54,7 @@ public class Tower {
 
             if (observers.get(i).getCoordinates().getHeight() <= 0) {
                 observers.remove(i);
+                i--;
             }
         }
     }
