@@ -24,30 +24,6 @@ public class Tower {
                 + flyable.getCoordinates().getLatitude() + ")");
     }
 
-    public void weatherMessage(Flyable flyable) {
-        switch (flyable.getWeather()) {
-            case "RAIN":
-                System.out.println(flyable.getType() + "#" + flyable.getName() + '(' + flyable.getId()
-                        + ") It's raining... 'Men' jk");
-                break;
-            case "FOG":
-                System.out.println(flyable.getType() + "#" + flyable.getName() + '(' + flyable.getId()
-                        + ") I can't see...The Fog is too thick");
-                break;
-            case "SUN":
-                System.out.println(flyable.getType() + "#" + flyable.getName() + '(' + flyable.getId()
-                        + ") It's hot hot hot up here ");
-                break;
-            case "SNOW":
-                System.out.println(flyable.getType() + "#" + flyable.getName() + '(' + flyable.getId()
-                        + ") There is enough snow to build a Snowman");
-                break;
-            default:
-                System.out.println("Houston we have a problem here");
-        }
-
-    }
-
     protected void conditionsChanged() {
         for (int i = 0; i < observers.size(); i++) {
             observers.get(i).updateConditions();
