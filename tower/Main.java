@@ -1,16 +1,13 @@
+package tower;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.Scanner;
-
 import aircraft.AircraftFactory;
 import aircraft.Flyable;
 import errorChecking.ErrorChecking;
-import tower.Tower;
-import tower.WeatherTower;
-import tower.*;
 public class Main {
-
   public static void main(String[] args) {
     PrintStream fileStream = null;
     try {
@@ -23,7 +20,6 @@ public class Main {
 
     int simulations = 0;
     WeatherTower weatherTower = new WeatherTower();
-    Tower tower = new Tower();
     try {
       File file = new File(args[0]);
       if (file != null) {
@@ -50,7 +46,6 @@ public class Main {
         for (int i = 1; i <= simulations; i++) {
           System.out.println("");
           System.out.println("Simulation " + i);
-
           weatherTower.changeWeather();
         }
         fileReader.close();
