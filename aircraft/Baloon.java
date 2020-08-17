@@ -28,7 +28,7 @@ public class Baloon extends Aircraft implements Flyable {
 
     @Override
     public String getWeather() {
-        return this.weather;
+        return weather;
     }
 
 }

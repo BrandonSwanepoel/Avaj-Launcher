@@ -29,7 +29,7 @@ public class Helicopter extends Aircraft implements Flyable {
 
     @Override
     public String getWeather() {
-        return this.weather;
+        return weather;
     }
 
 }

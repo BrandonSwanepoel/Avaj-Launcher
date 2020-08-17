@@ -28,7 +28,7 @@ public class JetPlane extends Aircraft implements Flyable {
 
     @Override
     public String getWeather() {
-        return this.weather;
+        return weather;
     }
 
 }

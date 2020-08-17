@@ -7,7 +7,10 @@ import java.util.Scanner;
 import aircraft.AircraftFactory;
 import aircraft.Flyable;
 import errorChecking.ErrorChecking;
+
 public class Main {
+  public static WeatherTower weatherTower = new WeatherTower();
+
   public static void main(String[] args) {
     PrintStream fileStream = null;
     try {
@@ -19,7 +22,6 @@ public class Main {
     }
 
     int simulations = 0;
-    WeatherTower weatherTower = new WeatherTower();
     try {
       File file = new File(args[0]);
       if (file != null) {
