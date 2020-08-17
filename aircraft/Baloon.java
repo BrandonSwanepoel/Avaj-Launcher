@@ -8,14 +8,12 @@ public class Baloon extends Aircraft implements Flyable {
 
     Baloon(String name, Coordinates coordinates) {
         super(name, coordinates);
-
     }
 
     @Override
     public void updateConditions() {
         weather = weatherTower.getWeather(coordinates);
         updateCoordinates(this,weather,weatherTower);
-        
     }
 
     @Override

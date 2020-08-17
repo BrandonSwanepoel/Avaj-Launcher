@@ -6,8 +6,9 @@ import java.util.Scanner;
 import aircraft.AircraftFactory;
 import aircraft.Flyable;
 import errorChecking.ErrorChecking;
+import tower.Tower;
 import tower.WeatherTower;
-
+import tower.*;
 public class Main {
 
   public static void main(String[] args) {
@@ -22,6 +23,7 @@ public class Main {
 
     int simulations = 0;
     WeatherTower weatherTower = new WeatherTower();
+    Tower tower = new Tower();
     try {
       File file = new File(args[0]);
       if (file != null) {

@@ -1,10 +1,7 @@
 package aircraft;
 
 public class Coordinates {
-    private int longitude;
-    private int latitude;
-    private int height;
-
+    
     Coordinates(int longitude, int latitude, int height) {
         setLongitude(longitude);
         setLatitude(latitude);
@@ -35,4 +32,7 @@ public class Coordinates {
         this.height = height > 100 ? 100 : height;
     }
 
+    private int longitude;
+    private int latitude;
+    private int height;
 }
