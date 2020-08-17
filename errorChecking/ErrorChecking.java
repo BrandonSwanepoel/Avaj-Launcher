@@ -1,4 +1,4 @@
-package ErrorChecking;
+package errorChecking;
 
 import java.util.Scanner;
 
@@ -7,16 +7,6 @@ public class ErrorChecking {
         int simulations = 0;
         try {
             simulations = Integer.parseInt(fileReader.nextLine());
-
-            if (simulations < 0) {
-                System.out.print("\nThe simulations amount is negative\nPlease fix it...\n");
-                fileReader.close();
-                System.exit(0);
-            } else if (simulations == 0) {
-                System.out.print("\nThe simulations amount is ZERO\nPlease fix it...\n");
-                fileReader.close();
-                System.exit(0);
-            }
             return simulations;
 
         } catch (NumberFormatException e) {
@@ -27,7 +17,17 @@ public class ErrorChecking {
         }
         return 0;
     }
-
+    public static void checkIfSimulationIsNotNegativeOrZero(int simulations, Scanner fileReader){
+        if (simulations < 0) {
+            System.out.print("\nThe simulations amount is negative\nPlease fix it...\n");
+            fileReader.close();
+            System.exit(0);
+        } else if (simulations == 0) {
+            System.out.print("\nThe simulations amount is ZERO\nPlease fix it...\n");
+            fileReader.close();
+            System.exit(0);
+        }
+    }
     public static void checkIfFileAttributesArePositive(String[] arr, Scanner fileReader) {
         for (int i = 2; i < arr.length; i++) {
             int elementInInteger = 0;
