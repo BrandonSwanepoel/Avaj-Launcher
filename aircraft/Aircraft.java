@@ -43,18 +43,18 @@ public class Aircraft {
 
         if (weather == "RAIN") {
             rain(aircraftType);
-            System.out.println(aircraftType + "#" + aircraftName + '(' + aircraftId + ") It's raining... 'Men' jk");
+            System.out.println(aircraftType + "#" + aircraftName + '(' + aircraftId + "): It's raining... 'Men' jk");
         } else if (weather == "FOG") {
             fog(aircraftType);
             System.out.println(
-                    aircraftType + "#" + aircraftName + '(' + aircraftId + ") I can't see...The Fog is too thick");
+                    aircraftType + "#" + aircraftName + '(' + aircraftId + "): I can't see...The Fog is too thick");
         } else if (weather == "SUN") {
             sun(aircraftType);
-            System.out.println(aircraftType + "#" + aircraftName + '(' + aircraftId + ") It's hot hot hot up here ");
+            System.out.println(aircraftType + "#" + aircraftName + '(' + aircraftId + "): It's hot hot hot up here ");
         } else if (weather == "SNOW") {
             snow(aircraftType);
             System.out.println(
-                    aircraftType + "#" + aircraftName + '(' + aircraftId + ") There is enough snow to build a Snowman");
+                    aircraftType + "#" + aircraftName + '(' + aircraftId + "): There is enough snow to build a Snowman");
         } else {
             System.out.println("Houston we have a problem here");
         }
