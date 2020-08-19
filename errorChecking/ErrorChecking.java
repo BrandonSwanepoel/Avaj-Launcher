@@ -61,10 +61,9 @@ public class ErrorChecking {
             }
         }
     }
-
     public static void checkIfAmountOfAttributesAreFive(String[] arr, Scanner fileReader) {
         if (arr.length != 5) {
-            System.out.print("\nThe Format of your text file is incorrect. There isn't 5 aircraft attributes\nPlease fix it...\n");
+            System.out.print("\nThe Format of your text file is incorrect or there isn't 5 aircraft attributes\nPlease fix it...\n");
             fileReader.close();
             System.exit(0);
         }
