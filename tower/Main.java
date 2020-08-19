@@ -23,35 +23,40 @@ public class Main {
 
     int simulations = 0;
     try {
-      File file = new File(args[0]);
-      if (file != null) {
-        Scanner fileReader = new Scanner(file);
-        simulations = ErrorChecking.checkIfSimulationIsNumber(fileReader);
-        ErrorChecking.checkIfSimulationIsNotNegativeOrZero(simulations, fileReader);
+      if (args.length == 0) {
+        System.out.println("An error occurred.");
+        System.exit(0);
+      } else {
+        File file = new File(args[0]);
+        if (file != null) {
+          Scanner fileReader = new Scanner(file);
+          simulations = ErrorChecking.checkIfSimulationIsNumber(fileReader);
+          ErrorChecking.checkIfSimulationIsNotNegativeOrZero(simulations, fileReader);
 
-        while (fileReader.hasNextLine()) {
-          String data = fileReader.nextLine();
-          if (data != null) {
-            String[] arr = data.split(" ");
+          while (fileReader.hasNextLine()) {
+            String data = fileReader.nextLine();
+            if (data != null) {
+              String[] arr = data.split(" ");
 
-            ErrorChecking.checkTheNameOfTheAircraft(arr, fileReader);
-            ErrorChecking.checkIfFileAttributesArePositive(arr, fileReader);
-            ErrorChecking.checkIfAmountOfAttributesAreFive(arr, fileReader);
+              ErrorChecking.checkTheNameOfTheAircraft(arr, fileReader);
+              ErrorChecking.checkIfFileAttributesArePositive(arr, fileReader);
+              ErrorChecking.checkIfAmountOfAttributesAreFive(arr, fileReader);
 
-            Flyable aircraft = AircraftFactory.newAircraft(arr[0], arr[1], Integer.parseInt(arr[2]),
-                Integer.parseInt(arr[3]), Integer.parseInt(arr[4]));
-            if (aircraft != null) {
-              aircraft.registerTower(weatherTower);
+              Flyable aircraft = AircraftFactory.newAircraft(arr[0], arr[1], Integer.parseInt(arr[2]),
+                  Integer.parseInt(arr[3]), Integer.parseInt(arr[4]));
+              if (aircraft != null) {
+                aircraft.registerTower(weatherTower);
+              }
             }
           }
+          for (int i = 1; i <= simulations; i++) {
+            System.out.println("");
+            System.out.println("Simulation " + i);
+            weatherTower.changeWeather();
+          }
+          fileReader.close();
+          fileStream.close();
         }
-        for (int i = 1; i <= simulations; i++) {
-          System.out.println("");
-          System.out.println("Simulation " + i);
-          weatherTower.changeWeather();
-        }
-        fileReader.close();
-        fileStream.close();
       }
     } catch (FileNotFoundException e) {
       System.out.println("An error occurred.");
